@@ -1,4 +1,4 @@
-// scope_guard.h
+// scope_guard.hpp
 // Declarative control flow utilites.
 
 #pragma once
