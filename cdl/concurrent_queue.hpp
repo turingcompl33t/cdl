@@ -1,4 +1,4 @@
-// queue_mt.hpp
+// concurrent_queue.hpp
 // A minimal threadsafe queue implementation.
 
 #pragma once
@@ -12,14 +12,14 @@
 namespace cdl
 {
 	template <typename T>
-	class queue_mt
+	class concurrent_queue
 	{
 	private:
 		mutable std::mutex             mutex_;
 		std::queue<std::shared_ptr<T>> queue_;
 		std::condition_variable        cv_;
 	public:
-		queue_mt() {};
+		concurrent_queue() {};
 
 		void wait_and_pop(T& value)
 		{
