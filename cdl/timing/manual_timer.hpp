@@ -1,7 +1,7 @@
 // manual_timer.hpp
 // Class Implementation: cdl::timing::manual_timer
 //
-// Simple timer class that is not bound by scope.
+// Simple timer class that is not controlled by its scope.
 
 #include <chrono>
 
