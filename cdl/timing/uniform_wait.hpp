@@ -8,6 +8,11 @@
 
 namespace cdl::timing
 {
+	// uniform_wait
+	//
+	// A helper class to generate random durations randomly
+	// distributed in the range [low, high]
+
 	template <typename ChronoType, typename IntType>
 	class uniform_wait
 	{
@@ -26,4 +31,10 @@ namespace cdl::timing
 			return ChronoType{ next_wait };
 		}
 	};
+
+	// Useful Specializations
+
+	using uniform_us_wait  = uniform_wait<std::chrono::microseconds, unsigned>;
+	using uniform_ms_wait  = uniform_wait<std::chrono::milliseconds, unsigned>;
+	using uniform_sec_wait = uniform_wait<std::chrono::seconds, unsigned>;
 }
