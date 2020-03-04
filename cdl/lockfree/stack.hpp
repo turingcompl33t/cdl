@@ -1,5 +1,6 @@
 // stack.hpp
 // Class Implementation: cdl::lockfree::stack
+//
 // A minimal lock-free implementation of a thread-safe stack data structure.
 
 #pragma once
