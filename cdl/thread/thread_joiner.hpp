@@ -13,11 +13,11 @@ namespace cdl::thread
 {
 	class thread_joiner
 	{
-		std::vector<std::thread>& threads_;
+		std::vector<std::thread>& m_threads;
 
 	public:
 		explicit thread_joiner(std::vector<std::thread>& threads)
-			: threads_{ threads }
+			: m_threads{ threads }
 		{}
 
 		~thread_joiner()
@@ -27,7 +27,7 @@ namespace cdl::thread
 
 		void wait_all()
 		{
-			for (auto& t : threads_)
+			for (auto& t : m_threads)
 			{
 				if (t.joinable())
 				{
