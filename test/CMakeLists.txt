@@ -7,11 +7,15 @@ add_library(catch_main STATIC catch_main.cpp)
 target_link_libraries(catch_main PUBLIC Catch2::Catch2)
 
 set(ALGORITHM_SRCS "algorithm/invoke_n.cpp")
+set(CONCURRENT_SRCS 
+    "concurrent/queue.cpp"
+    "concurrent/stack.cpp")
 set(FUNCTIONAL_SRCS "functional/with.cpp")
 set(THREAD_SRCS "thread/thread_group.cpp")
 
 add_executable(cdl_tests
     ${ALGORITHM_SRCS}
+    ${CONCURRENT_SRCS}
     ${FUNCTIONAL_SRCS}
     ${THREAD_SRCS})
 target_link_libraries(cdl_tests PRIVATE catch_main cdl)
