@@ -6,7 +6,9 @@ include(${CMAKE_SOURCE_DIR}/deps/catch2/contrib/Catch.cmake)
 add_library(catch_main STATIC catch_main.cpp)
 target_link_libraries(catch_main PUBLIC Catch2::Catch2)
 
-set(ALGORITHM_SRCS "algorithm/invoke_n.cpp")
+set(ALGORITHM_SRCS 
+    "algorithm/invoke_n.cpp"
+    "algorithm/foreach.cpp")
 set(CONCURRENT_SRCS 
     "concurrent/queue.cpp"
     "concurrent/stack.cpp")
