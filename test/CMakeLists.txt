@@ -12,14 +12,20 @@ set(ALGORITHM_SRCS
 set(CONCURRENT_SRCS 
     "concurrent/queue.cpp"
     "concurrent/stack.cpp")
-set(FUNCTIONAL_SRCS "functional/with.cpp")
-set(THREAD_SRCS "thread/thread_group.cpp")
+set(FUNCTIONAL_SRCS 
+    "functional/with.cpp")
+set(STRING_SRCS 
+    "string/basic_string.cpp")
+set(THREAD_SRCS 
+    "thread/thread_group.cpp")
 
 add_executable(cdl_tests
     ${ALGORITHM_SRCS}
     ${CONCURRENT_SRCS}
     ${FUNCTIONAL_SRCS}
+    ${STRING_SRCS}
     ${THREAD_SRCS})
+    
 target_link_libraries(cdl_tests PRIVATE catch_main cdl)
 
 catch_discover_tests(cdl_tests)
