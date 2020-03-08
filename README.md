@@ -24,7 +24,7 @@ cd build
 2. Use CMake to generate the build system for your tool of choice. For example, with Ninja:
 
 ```
-cmake .. -DCDL_ENABLE_TESTING -G Ninja
+cmake .. -DCDL_ENABLE_TESTING=ON -G Ninja
 ```
 
 3. Build the library using your tool of choice. For example, with Ninja:
