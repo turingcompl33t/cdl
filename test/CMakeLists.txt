@@ -20,6 +20,8 @@ set(STRING_SRCS
     "string/basic_string.cpp")
 set(THREAD_SRCS 
     "thread/thread_group.cpp")
+set(UTILITY_SRCS
+    "utility/bit_cast.cpp")
 
 add_executable(cdl_tests
     ${ALGORITHM_SRCS}
@@ -28,7 +30,7 @@ add_executable(cdl_tests
     ${MEMORY_SRCS}
     ${STRING_SRCS}
     ${THREAD_SRCS}
-    )
+    ${UTILITY_SRCS})
     
 target_link_libraries(cdl_tests PRIVATE catch_main cdl)
 
