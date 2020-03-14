@@ -14,6 +14,8 @@ set(CONCURRENT_SRCS
     "concurrent/stack.cpp")
 set(FUNCTIONAL_SRCS 
     "functional/with.cpp")
+set(MEMORY_SRCS
+    "memory/unique_ptr.cpp")
 set(STRING_SRCS 
     "string/basic_string.cpp")
 set(THREAD_SRCS 
@@ -23,8 +25,10 @@ add_executable(cdl_tests
     ${ALGORITHM_SRCS}
     ${CONCURRENT_SRCS}
     ${FUNCTIONAL_SRCS}
+    ${MEMORY_SRCS}
     ${STRING_SRCS}
-    ${THREAD_SRCS})
+    ${THREAD_SRCS}
+    )
     
 target_link_libraries(cdl_tests PRIVATE catch_main cdl)
 
