@@ -21,7 +21,8 @@ set(STRING_SRCS
 set(THREAD_SRCS 
     "thread/thread_group.cpp")
 set(UTILITY_SRCS
-    "utility/bit_cast.cpp")
+    "utility/bit_cast.cpp"
+    "utility/voidify.cpp")
 
 add_executable(cdl_tests
     ${ALGORITHM_SRCS}
