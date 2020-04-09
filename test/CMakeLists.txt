@@ -14,17 +14,25 @@ set(CONCURRENT_SRCS
     "concurrent/stack.cpp")
 set(FUNCTIONAL_SRCS 
     "functional/with.cpp")
+set(ITERATOR_SRCS
+    "iterator/dev_null.cpp")
+    #"iterator/output_transform.cpp"
+set(MEMORY_SRCS
+    "memory/unique_ptr.cpp")
 set(STRING_SRCS 
     "string/basic_string.cpp")
 set(THREAD_SRCS 
     "thread/thread_group.cpp")
 set(UTILITY_SRCS
-    "utility/bit_cast.cpp")
+    "utility/bit_cast.cpp"
+    "utility/voidify.cpp")
 
 add_executable(cdl_tests
     ${ALGORITHM_SRCS}
     ${CONCURRENT_SRCS}
     ${FUNCTIONAL_SRCS}
+    ${ITERATOR_SRCS}
+    ${MEMORY_SRCS}
     ${STRING_SRCS}
     ${THREAD_SRCS}
     ${UTILITY_SRCS})
