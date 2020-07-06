@@ -1,10 +1,10 @@
 # CMakeLists.txt
 
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.16)
 
 project(cdl CXX)
 
-option(CDL_ENABLE_TESTING "Enable internal test suite" OFF)
+option(CDL_ENABLE_TESTING "Enable internal test suite" ON)
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(
