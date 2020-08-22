@@ -1,10 +1,11 @@
 # CMakeLists.txt
 
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.17)
 
 project(cdl CXX)
 
-option(CDL_ENABLE_TESTING "Enable internal test suite" ON)
+option(CDL_BUILD_TESTS "Build internal test suite" ON)
+option(CDL_BUILD_EXAMPLES "Build example programs" OFF)
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(
@@ -13,9 +14,14 @@ target_include_directories(
     $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>)
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 
-if(CDL_ENABLE_TESTING)
+if(CDL_BUILD_TESTS)
     enable_testing()
-    message("Building tests...")
+    message("Configuring tests...")
     add_subdirectory(test)
     add_subdirectory(deps/catch2)
+endif()
+
+if(CDL_BUILD_EXAMPLES)
+    message("Configuring examples...")
+    add_subdirectory(example)
 endif()
