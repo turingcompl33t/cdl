@@ -12,6 +12,9 @@ SET(CONCURRENT_SRCS
     "concurrent/queue.cpp"
     "concurrent/stack.cpp")
 
+SET(LOCKFREE_SRCS
+    "lockfree/spsc.cpp")
+
 SET(LOWLOCK_SRCS
     "lowlock/list.cpp"
     "lowlock/queue.cpp"
@@ -26,6 +29,7 @@ SET(UTILITY_SRCS
 
 add_executable(cdl_tests 
     ${CONCURRENT_SRCS}
+    ${LOCKFREE_SRCS}
     ${LOWLOCK_SRCS}
     ${SYNC_SRCS}
     ${UTILITY_SRCS})
