@@ -1,4 +1,4 @@
-// test/latch.cpp
+// test/sync/latch.cpp
 
 #include <catch2/catch.hpp>
 
