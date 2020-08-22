@@ -1,8 +1,8 @@
-// sync/latch.hpp
+// latch.hpp
 // A single-use thread sycnhronization barrier.
 
-#ifndef CDL_LATCH_HPP
-#define CDL_LATCH_HPP
+#ifndef CDL_SYNC_LATCH_HPP
+#define CDL_SYNC_LATCH_HPP
 
 #include <mutex>
 #include <cassert>
@@ -95,4 +95,4 @@ namespace cdl::sync
     };
 }
 
-#endif // CDL_LATCH_HPP
+#endif // CDL_SYNC_LATCH_HPP

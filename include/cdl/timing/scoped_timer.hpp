@@ -1,36 +1,37 @@
 // scoped_timer.hpp
-// Class Implementation: cdl::timing::scoped_timer
 //
-// Simple utility class that utilizes RAII to measure the
-// execution time of a particular scope.
+// Simple utility class that utilizes RAII to 
+// measure the execution time of a particular scope.
+
+#ifndef CDL_TIMING_SCOPED_TIMER_HPP
+#define CDL_TIMING_SCOPED_TIMER_HPP
 
 #include <chrono>
-#include <ostream>
+#include <cstdint>
 
 namespace cdl::timing
 {
 	template <typename DurationType>
 	class scoped_timer
 	{
-		std::ostream& stream_;
+		std::uint64_t& out;
+
 		std::chrono::time_point<
 			std::chrono::high_resolution_clock
-			> begin_;
+			> begin;
 
 	public:
-		scoped_timer(std::ostream& stream)
-			: stream_{ stream }
+		explicit scoped_timer(std::uint64_t& out_)
+			: out{out_}
 		{
-			begin_ = std::chrono::high_resolution_clock::now();
+			begin = std::chrono::high_resolution_clock::now();
 		}
 
 		~scoped_timer()
 		{
-			auto end = std::chrono::high_resolution_clock::now();
-			auto duration = end - begin_;
-			
-			auto result = std::chrono::duration_cast<DurationType>(duration);
-			stream_ << result.count();
+			auto end = std::chrono::high_resolution_clock::now();			
+			auto elapsed = std::chrono::duration_cast<DurationType>(end - begin);
+			out = elapsed.count();
 		}
 	};
 
@@ -38,3 +39,5 @@ namespace cdl::timing
 	using ms_scoped_timer  = scoped_timer<std::chrono::milliseconds>;
 	using sec_scoped_timer = scoped_timer<std::chrono::seconds>;
 }
+
+#endif // CDL_TIMING_SCOPED_TIMER_HPP

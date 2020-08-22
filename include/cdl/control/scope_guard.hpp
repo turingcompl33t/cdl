@@ -1,15 +1,22 @@
 // scope_guard.hpp
-// Macro Definitions: SCOPE_EXIT, SCOPE_FAIL, SCOPE_SUCCESS
-//
 // Declarative control flow utilites.
+//
+// Macro Definitions: 
+//	- SCOPE_EXIT
+//	- SCOPE_FAIL
+//	- SCOPE_SUCCESS
+//
+// Inspired by Andrei Alexandrescu's talk:
+// "Declarative Control Flow" from CppCon 2015
 
-#pragma once
+#ifndef CDL_CONTROL_SCOPE_GUARD_HPP
+#define CDL_CONTROL_SCOPE_GUARD_HPP
 
 #include <utility>
 #include <exception>
 #include <functional>
 
-namespace cdl::detail
+namespace cdl::control::detail
 {
 	// uncaught_exception_counter
 	//
@@ -163,12 +170,14 @@ namespace cdl::detail
 
 #define SCOPE_EXIT \
 	auto ANONYMOUS_VARIABLE(SCOPE_EXIT_STATE) \
-	= cdl::detail::scope_guard_on_exit{} + [&]()
+	= cdl::control::detail::scope_guard_on_exit{} + [&]()
 
 #define SCOPE_FAIL \
 	auto ANONYMOUS_VARIABLE(SCOPE_FAIL_STATE) \
-	= cdl::detail::scope_guard_on_fail{} + [&]() noexcept
+	= cdl::control::detail::scope_guard_on_fail{} + [&]() noexcept
 
 #define SCOPE_SUCCESS \
 	auto ANONYMOUS_VARIABLE(SCOPE_SUCCESS_STATE) \
-	= cdl::detail::scope_guard_on_success{} + [&]() noexcept
+	= cdl::control::detail::scope_guard_on_success{} + [&]() noexcept
+
+#endif // CDL_CONTROL_SCOPE_GUARD_HPP

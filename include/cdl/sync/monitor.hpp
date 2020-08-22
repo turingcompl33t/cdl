@@ -1,29 +1,32 @@
 // monitor.hpp
-// Class Implementation: cdl::synchronization::monitor
 //
 // Minimal monitor pattern implementation.
 
+#ifndef CDL_SYNC_MONITOR_HPP
+#define CDL_SYNC_MONITOR_HPP
+
 #include <mutex>
 
-namespace cdl::synchronization
+namespace cdl::sync
 {
     template <typename T>
     class monitor
     {
-    private:
-        T          t_;
-        std::mutex mutex_;
+        T          t;
+        std::mutex lock;
+
     public:
-        monitor(T t = T{})
-            : t_{ t }
-        {}
+        monitor(T t_ = T{})
+            : t{t_}
+            , lock{} {}
 
         template<typename F>
-        auto operator()(F f) -> decltype(f(t_))
+        auto operator()(F f) -> decltype(f(t))
         {
-            std::lock_guard<std::mutex> guard{ mutex_ };
-            return f(t_);
+            std::scoped_lock<std::mutex> guard{lock};
+            return f(t);
         }
     };
 }
 
+#endif // CDL_SYNC_MONITOR_HPP

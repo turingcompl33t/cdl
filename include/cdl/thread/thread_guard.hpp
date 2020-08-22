@@ -1,12 +1,12 @@
 // thread_guard.hpp
-// Class Implementation: cdl::thread::thread_guard
 //
-// Minimal RAII wrapper for thread objects which ensure the 
-// thread is not joinable prior to destruction.
+// Minimal RAII wrapper for thread objects which ensures
+// the associated thread is not joinable prior to destruction.
+
+#ifndef CDL_THREAD_THREAD_GUARD
+#define CDL_THREAD_THREAD_GUARD
 
 #include <thread>
-
-#pragma once
 
 namespace cdl::thread
 {
@@ -27,3 +27,5 @@ namespace cdl::thread
 		}
 	};
 }
+
+#endif // CDL_THREAD_THREAD_GUARD

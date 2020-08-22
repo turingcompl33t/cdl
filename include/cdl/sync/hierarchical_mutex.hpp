@@ -1,12 +1,12 @@
-// sync/hierarchical_mutex.hpp
+// hierarchical_mutex.hpp
 //
 // Mutex wrapper classes that enforces strict lock hierarchy.
 //
 // Adapted from the implementation from 
 // "C++ Concurrency in Action" by Anthony Williams.
 
-#ifndef CDL_HIERARCHICAL_MUTEX_HPP
-#define CDL_HIERARCHICAL_MUTEX_HPP
+#ifndef CDL_SYNC_HIERARCHICAL_MUTEX_HPP
+#define CDL_SYNC_HIERARCHICAL_MUTEX_HPP
 
 #include <mutex>
 #include <exception>
@@ -77,4 +77,4 @@ namespace cdl::sync
 	thread_local unsigned long hierarchical_mutex::this_thread_hierarchy_level_{ ULONG_MAX };
 }
 
-#endif // CDL_HIERARCHICAL_MUTEX_HPP
+#endif // CDL_SYNC_HIERARCHICAL_MUTEX_HPP

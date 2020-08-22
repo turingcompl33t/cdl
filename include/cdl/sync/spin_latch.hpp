@@ -1,12 +1,12 @@
-// sync/spin_latch.hpp
+// spin_latch.hpp
 // A single-use thread sycnhronization barrier.
 //
 // Interface equivalent to sync::latch but significantly
 // lighter-weight at the cost of spin waits rather than
 // true OS-level thread sleeps.
 
-#ifndef CDL_SPIN_LATCH_HPP
-#define CDL_SPIN_LATCH_HPP
+#ifndef CDL_SYNC_SPIN_LATCH_HPP
+#define CDL_SYNC_SPIN_LATCH_HPP
 
 #include <atomic>
 #include <thread>
@@ -74,4 +74,4 @@ namespace cdl::sync
     };
 }
 
-#endif // CDL_SPIN_LATCH_HPP
+#endif // CDL_SYNC_SPIN_LATCH_HPP

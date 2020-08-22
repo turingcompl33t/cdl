@@ -1,38 +1,38 @@
-// joining_thread.hpp
-// Class Implementation: cdl::thread::joining_thread
+// jthread.hpp
 //
-// Minimal implementation of (possibly forthcoming) std::jthread
+// Minimal implementation of (forthcoming in c++20) std::jthread
 // which resembles a std::thread object with the additional semantics
 // that it automatically joins in its destructor.
 
-#pragma once
+#ifndef CDL_THREAD_JTHREAD_HPP
+#define CDL_THREAD_JTHREAD_HPP
 
 #include <thread>
 #include <utility>
 
 namespace cdl::thread
 {
-	class joining_thread
+	class jthread
 	{
 		std::thread t_;
 
 	public:
-		joining_thread() noexcept = default;
+		jthread() noexcept = default;
 
 		template <typename Callable, typename ... Args>
-		explicit joining_thread(Callable&& func, Args&&... args)
+		explicit jthread(Callable&& func, Args&&... args)
 			: t_{ std::forward<Callable>(func), std::forward<Args>(args)... }
 		{}
 
-		explicit joining_thread(std::thread t) noexcept
+		explicit jthread(std::thread t) noexcept
 			: t_{ std::move(t) }
 		{}
 
-		joining_thread(joining_thread&& other) noexcept
+		jthread(jthread&& other) noexcept
 			: t_{ std::move(other.t_) }
 		{}
 
-		joining_thread& operator=(joining_thread&& rhs) noexcept
+		jthread& operator=(jthread&& rhs) noexcept
 		{
 			if (joinable())
 			{
@@ -43,18 +43,18 @@ namespace cdl::thread
 			return *this;
 		}
 
-		joining_thread operator=(std::thread rhs) noexcept
+		jthread& operator=(std::thread rhs) noexcept
 		{
 			if (joinable())
 			{
-				join()
+				join();
 			}
 
 			t_ = std::move(rhs);
 			return *this;
 		}
 
-		~joining_thread() noexcept
+		~jthread() noexcept
 		{
 			if (joinable())
 			{
@@ -62,7 +62,7 @@ namespace cdl::thread
 			}
 		}
 
-		void swap(joining_thread& other) noexcept
+		void swap(jthread& other) noexcept
 		{
 			t_.swap(other.t_);
 		}
@@ -96,5 +96,7 @@ namespace cdl::thread
 		{
 			return t_;
 		}
-	}
+	};
 }
+
+#endif // CDL_THREAD_JTHREAD_HPP

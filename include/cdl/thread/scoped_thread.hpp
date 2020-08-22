@@ -1,10 +1,10 @@
 // scoped_thread.hpp
-// Class Implementation: cdl::thread::scoped_thread
 //
 // Enhanced version of a basic thread RAII wrapper in which
 // the wrapper class takes ownership of the underlying thread object.
 
-#pragma once
+#ifndef CDL_THREAD_SCOPED_THREAD_HPP
+#define CDL_THREAD_SCOPED_THREAD_HPP
 
 #include <thread>
 #include <utility>
@@ -31,7 +31,9 @@ namespace cdl::thread
 			t_.join();
 		}
 
-		scoped_thread(const scoped_thread&) = delete;
+		scoped_thread(const scoped_thread&)            = delete;
 		scoped_thread& operator=(const scoped_thread&) = delete;
 	};
 }
+
+#endif // CDL_THREAD_SCOPED_THREAD_HPP

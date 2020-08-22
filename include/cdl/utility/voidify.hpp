@@ -1,9 +1,9 @@
 // voidify.hpp
-//
-// Free Function Implementation:
-//  - cdl::utility::voidify()
+// Transform a capturing lambda into a function 
+// pointer that can be marshalled through a C API.
 
-#pragma once
+#ifndef CDL_UTILITY_VOIDIFY_HPP
+#define CDL_UTILITY_VOIDIFY_HPP
 
 #include <tuple>
 #include <memory>
@@ -31,3 +31,5 @@ namespace cdl::utility
         };
     }
 }
+
+#endif // CDL_UTILITY_VOIDIFY_HPP
