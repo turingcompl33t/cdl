@@ -1,8 +1,7 @@
-// voidify.cpp
-// 
-// Unit Test: cdl::utility::voidify()
+// test/voidify.cpp
 
 #include <catch2/catch.hpp>
+
 #include <cdl/utility/voidify.hpp>
 
 using func1_f = void(*)(void*);
@@ -20,9 +19,10 @@ void register_callback2(func2_f fn, void* p, int n)
 
 TEST_CASE("cdl::utility::voidify() supports passing capturing lambda to C-style interface")
 {
-    auto x = int{0};
+    int x{0};
 
     auto closure = [&x](){ ++x; };
+
     auto voidified = cdl::utility::voidify(closure);
 
     register_callback1(voidified.first, voidified.second.get());
@@ -36,9 +36,10 @@ TEST_CASE("cdl::utility::voidify() supports passing capturing lambda to C-style 
 
 TEST_CASE("cdl::utility::voidify() supports passing capturing lambda with arguments to C-style interface")
 {
-    auto x = int{0};
+    int x{0};
 
     auto closure = [&x](int n){ x += n; };
+
     auto voidified = cdl::utility::voidify<int>(closure);
 
     register_callback2(voidified.first, voidified.second.get(), 4);

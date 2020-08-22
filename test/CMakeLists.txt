@@ -16,9 +16,13 @@ SET(SYNC_SRCS
     "sync/latch.cpp"
     "sync/spin_latch.cpp")
 
+SET(UTILITY_SRCS
+    "utility/voidify.cpp")
+
 add_executable(cdl_tests 
     ${CONCURRENT_SRCS}
-    ${SYNC_SRCS})
+    ${SYNC_SRCS}
+    ${UTILITY_SRCS})
     
 target_link_libraries(cdl_tests PRIVATE catch_main cdl ${CMAKE_THREAD_LIBS_INIT})
 
