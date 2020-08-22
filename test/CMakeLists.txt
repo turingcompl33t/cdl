@@ -8,11 +8,17 @@ find_package(Threads REQUIRED)
 add_library(catch_main STATIC catch_main.cpp)
 target_link_libraries(catch_main PUBLIC Catch2::Catch2)
 
+SET(CONCURRENT_SRCS
+    "concurrent/queue.cpp"
+    "concurrent/stack.cpp")
+
 SET(SYNC_SRCS
     "sync/latch.cpp"
     "sync/spin_latch.cpp")
 
-add_executable(cdl_tests ${SYNC_SRCS})
+add_executable(cdl_tests 
+    ${CONCURRENT_SRCS}
+    ${SYNC_SRCS})
     
 target_link_libraries(cdl_tests PRIVATE catch_main cdl ${CMAKE_THREAD_LIBS_INIT})
 
