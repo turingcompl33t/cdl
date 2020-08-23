@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.17)
 
 project(cdl CXX)
 
-option(CDL_BUILD_TESTS "Build internal test suite" ON)
+option(CDL_BUILD_TESTS "Build internal test suite" OFF)
 option(CDL_BUILD_EXAMPLES "Build example programs" OFF)
 
 add_library(${PROJECT_NAME} INTERFACE)
