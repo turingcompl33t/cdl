@@ -6,6 +6,7 @@ project(cdl CXX)
 
 option(CDL_BUILD_TESTS "Build internal test suite" OFF)
 option(CDL_BUILD_EXAMPLES "Build example programs" OFF)
+OPTION(CDL_BUILD_BENCHMARKS "Build benchmark programs" OFF)
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(
@@ -24,4 +25,11 @@ endif()
 if(CDL_BUILD_EXAMPLES)
     message("Configuring examples...")
     add_subdirectory(example)
+endif()
+
+if(CDL_BUILD_BENCHMARKS)
+    message("Configuring benchmarks...")
+    set(BENCHMARK_ENABLE_TESTING OFF)
+    add_subdirectory(deps/benchmark)
+    add_subdirectory(bench)
 endif()
